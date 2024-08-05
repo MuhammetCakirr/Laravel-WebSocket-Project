@@ -9,3 +9,12 @@ Route::get('/', function () {
 Route::get('anasayfa',function(){
     return View('anasayfa');
 });
+
+Route::get('orders',function(){
+    return View('orders_page');
+});
+
+Route::get('order-detail',function(){
+    return View('order_detail');
+});
+
