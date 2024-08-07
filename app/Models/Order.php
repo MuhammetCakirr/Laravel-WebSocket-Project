@@ -25,7 +25,7 @@ class Order extends Model
     }
 
     public function orderAddress(){
-        return $this->belongsTo(OrderAddress::class);
+        return $this->hasOne(OrderAddress::class);
     }
 
     public function orderItems(){
@@ -33,6 +33,6 @@ class Order extends Model
     }
 
     public function orderUser(){
-        return $this->belongsTo(OrderUser::class);
+        return $this->hasOne(OrderUser::class);
     }
 }

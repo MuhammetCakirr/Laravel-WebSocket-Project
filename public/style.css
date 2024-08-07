@@ -320,3 +320,122 @@ footer styles
     width: 1px;
     background-color: black;
 }
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.notification {
+    background-color: #444;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+}
+.notification p {
+    margin: 0;
+    flex: 1;
+}
+.notification button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.mycss1 {
+    visiblity: hidden;
+    position: absolute;
+    bottom: 30px;
+    right: -400px;
+    width: 400px;
+    height: 150px;
+    background-color: rgba(138, 19, 87, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid #8a1357;
+    border-radius: 10px;
+    transition: 1s;
+    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.mycss1 p {
+    margin: 0;
+    color: black;
+}
+
+.mycss2 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 4px;
+    padding-left: 10px;
+}
+
+.mycss2 p {
+    font-size: 25px;
+}
+
+.mycss3 {
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    background-color: black;
+    padding: 7px;
+}
+
+.mycss3 img {
+    width: 100%;
+    height: 100%;
+}
+
+.mycss4 {
+    color: black;
+    margin-left: 70px;
+}
+
+.mycsstitle {
+    font-weight: 600;
+}
+
+.mycssproj {
+    font-weight: 600;
+    color: #8a1357;
+}
+
+.css5 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.css5 button {
+    background-color: #8a1357;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+}

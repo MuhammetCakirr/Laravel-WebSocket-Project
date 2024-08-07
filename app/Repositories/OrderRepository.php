@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Repositories;
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use App\Models\OrderAddress;
 use App\Models\OrderItems;
 use App\Models\OrderUser;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Collection;
 
 class OrderRepository
 {
@@ -59,4 +62,16 @@ class OrderRepository
         ]);
     }
 
+    public function getAllOrders(int $branchId):AnonymousResourceCollection
+    {
+        $orders= Order::query()->where('branch_id', $branchId)->with(["status","orderAddress","orderItems","orderUser","branch"])
+                      -> orderBy('created_at',"desc")->get();
+        return OrderResource::collection($orders);
+    }
+    public function getOrderById(int $id):OrderResource
+    {
+        $order= Order::query()->where('id',$id)->with(["status","orderAddress","orderItems","orderUser","branch"])
+            ->first();
+        return new OrderResource($order);
+    }
 }

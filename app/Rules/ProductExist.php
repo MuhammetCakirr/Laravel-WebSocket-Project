@@ -15,15 +15,12 @@ class ProductExist implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-
-
-        foreach ($value as $id=>$quantity) {
-//            dd($id,$quantity);
+        foreach ($value as $id=>$quantity)
+        {
             if (!is_numeric($id)) {
                 $fail("All product IDs must be of the number type.");
             }
             $product=Product::query()->where('id', $id)->first();
-//            dd($product);
             if (!$product) {
                 $fail("The product belonging to this id has not been found.");
             }
@@ -33,7 +30,6 @@ class ProductExist implements ValidationRule
                 $fail($product->name." doesn't have that much stock. available stock is " .$product->stock);
             }
         }
-
 
     }
 

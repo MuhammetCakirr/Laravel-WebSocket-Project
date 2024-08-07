@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $phone
+ * @property string $email
+ */
 class Customer extends Authenticatable
 {
     use HasFactory,HasApiTokens, Notifiable;

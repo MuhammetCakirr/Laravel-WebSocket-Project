@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\OrderCreated;
 use App\Models\Product;
 use App\Models\Status;
 use App\Repositories\OrderRepository;
@@ -22,13 +23,13 @@ class OrderService
 
         $repository =new OrderRepository();
 
-        $order=$repository->orderCreate($nearBranchId,1,6,$subtotal,$total,$tax);
+        $order=$repository->orderCreate($nearBranchId,1,$datas->get('userId'),$subtotal,$total,$tax);
 
         $repository->orderAddressCreate($order->id,$datas->get('country'),
                                         $datas->get('city'),$datas->get('state'),
                                         $datas->get('line1'),$datas->get('line2'));
 
-        $repository->orderUserCreate($order->id,"Mrs. Irma Aufderhar II","dariana99@example.net","+1.806.437.8844");
+        $repository->orderUserCreate($order->id,$datas->get('userName'),$datas->get('userEmail'),$datas->get('userPhone'));
 
         foreach ($datas->get('products') as $id => $quantity) {
             $product = Product::query()->find($id);
@@ -38,7 +39,9 @@ class OrderService
                                           $product->is_discount);
         }
 
-        return "Order has been successfuly created. " ;
+        event(new OrderCreated($order->id,$nearBranchId));
+
+        return "Order has been successfuly created." ;
 
 
     }

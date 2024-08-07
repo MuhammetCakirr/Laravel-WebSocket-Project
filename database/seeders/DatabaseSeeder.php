@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(AddDatabaseLocations::class);
         // $this->call(AddDatabaseBranches::class);
 //        $this->call(AddDatabaseProduct::class);
-        $this->call(AddDatabaseCustomer::class);
+        $this->call(AddDatabasePersonal::class);
     }
 }
